@@ -2,7 +2,7 @@ let t1score = 0;
 let t2score = 0;
 
 function addScore(score, team){
-    if (team === 'team1Score'){
+    if (team === 'team1score'){
         t1score += score;
         document.getElementById(team).textContent = t1score;
         return;

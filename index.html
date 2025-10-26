@@ -7,30 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="main">
-        <div id="container">
-            <div>
-                <h1>TEAM 1</h1>
-                <div class="score">
-                    <h1 id="team1Score">0</h1>
-                </div>
-                <button onclick="addScore(1, 'team1Score')">+1</button>
-                <button onclick="addScore(2, 'team1Score')">+2</button>
-                <button onclick="addScore(3, 'team1Score')">+3</button>
-            </div>
-            <div>
-                <h1>TEAM 2</h1>
-                <div class="score">
-                    <h1 id="team2Score">0</h1>
-                </div>
-                <button onclick="addScore(1, 'team2Score')">+1</button>
-                <button onclick="addScore(2, 'team2Score')">+2</button>
-                <button onclick="addScore(3, 'team2Score')">+3</button>
-            </div>
-        </div>
-        <button id="reset-btn" onclick="reset()">reset</button>
+    <div class="container" id="title">
+        <h1>TEAM 1</h1>
+        <h1>TEAM 2</h1>
     </div>
-    
-    <script src="script.js"></script>
+
+    <div class="container">
+        <h1 class="scores" id="team1score">0</h1>
+        <h1 class="scores" id="team2score">0</h1>
+    </div>
+
+    <div class="containers" id="btn">
+        <div>
+            <button onclick="addScore(1, 'team1score')">+1</button>
+            <button onclick="addScore(2, 'team1score')">+2</button>
+            <button onclick="addScore(3, 'team1score')">+3</button>
+        </div>
+        <div>
+            <button onclick="addScore(1, 'team2score')">+1</button>
+            <button onclick="addScore(2, 'team2score')">+2</button>
+            <button onclick="addScore(3, 'team2score')">+3</button>
+        </div>
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
