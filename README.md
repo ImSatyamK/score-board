@@ -16,7 +16,7 @@ It lets you easily track, increase, and reset scores for players or teams in rea
 
 ## 🚀 LIVE DEMO
 
-🔗 Try it online: [Score Board](https://your-netlify-site-name.netlify.app)  
+🔗 Try it online: [Score Board](https://js-scoreboard-001.netlify.app/)  
 
 ---
 
