@@ -11,9 +11,9 @@ function addScore(score, team){
     document.getElementById(team).textContent = t2score;
 }
 
-function reset(){
+function resetScore(){
     t1score = 0;
     t2score = 0;
-    document.getElementById('team1Score').textContent = t1score;
-    document.getElementById('team2Score').textContent = t2score;
+    document.getElementById('team1score').textContent = t1score;
+    document.getElementById('team2score').textContent = t2score;
 }
