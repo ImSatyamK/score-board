@@ -11,6 +11,8 @@ It lets you easily track, increase, and reset scores for players or teams in rea
 - ⚡ Real-time updates without page reload  
 - 🎨 Clean and responsive user interface  
 - 💻 Built with Vanilla JavaScript — no libraries required
+- ✏️ Edit Team names
+- 🔄️ Reset Scores
 
 ---
 
