@@ -4,33 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCORE BOARD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="title">
-        <h1>TEAM 1</h1>
-        <h1>TEAM 2</h1>
-    </div>
+    <div id="container">
+        <div id="teams">
+            <div id="team1">
+                <div id="team1title">
+                    <div id="team1name-box">
+                        <h1 id="team1name">TEAM 1</h1>
+                        <button id="team1name-edit" onclick="editTeam('team1')">&#9998;</button>
+                    </div>
+                    <div id="team1input-box">
+                        <input type="text" id="team1name-input" placeholder="TEAM 1">
+                        <button id="team1save-btn" onclick="saveTeam(1)">&#9113;</button>
+                    </div>
+                </div>
+                
+                <h1 id="team1score">00</h1>
 
-    <div class="container">
-        <h1 class="scores" id="team1score">0</h1>
-        <h1 class="scores" id="team2score">0</h1>
-    </div>
+                <div id="team1score-adders">
+                    <button onclick="addScore(1, 'team1score')">+1</button>
+                    <button onclick="addScore(2, 'team1score')">+2</button>
+                    <button onclick="addScore(3, 'team1score')">+3</button>
+                </div>
+            </div>
+            
+            <button id="reset-score" onclick="resetScore()">RESET SCORE</button>
 
-    <div class="containers" id="btn">
-        <div>
-            <button onclick="addScore(1, 'team1score')">+1</button>
-            <button onclick="addScore(2, 'team1score')">+2</button>
-            <button onclick="addScore(3, 'team1score')">+3</button>
+            <div id="team2">
+                <div id="team2title">
+                    <div id="team2name-box">
+                        <h1 id="team2name">TEAM 2</h1>
+                        <button id="team2name-edit" onclick="editTeam('team2')">&#9998;</button>
+                    </div>
+                    <div id="team2input-box">
+                        <input type="text" id="team2name-input" placeholder="TEAM 2">
+                        <button id="team2save-btn" onclick="saveTeam(2)">&#9113;</button>
+                    </div>
+                </div>
+                
+                <h1 id="team2score">00</h1>
+
+                <div id="team2score-adders">
+                    <button onclick="addScore(1, 'team2score')">+1</button>
+                    <button onclick="addScore(2, 'team2score')">+2</button>
+                    <button onclick="addScore(3, 'team2score')">+3</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <button onclick="addScore(1, 'team2score')">+1</button>
-            <button onclick="addScore(2, 'team2score')">+2</button>
-            <button onclick="addScore(3, 'team2score')">+3</button>
+
+        <div id="timer">
+            <h1 id="time-display">00:00</h1>
+            <div id="timer-controls">
+                <button id="start-btn">START</button>
+                <button id="pause-btn">PAUSE</button>
+                <button id="reset-btn">RESET</button>
+            </div>
         </div>
     </div>
-
-    <button id="resetScore" onclick="resetScore()">RESET SCORE</button>
 <script src="script.js"></script>
 </body>
 </html>
