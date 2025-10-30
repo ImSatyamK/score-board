@@ -13,6 +13,7 @@ It lets you easily track, increase, and reset scores for players or teams in rea
 - 💻 Built with Vanilla JavaScript — no libraries required
 - ✏️ Edit Team names
 - 🔄️ Reset Scores
+- ⏱️ Kepp track of time with built in timer
 
 ---
 
