@@ -3,67 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCORE BOARD</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>ScoreBoard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tourney:ital,wdth,wght@0,75..125,100..900;1,75..125,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <div id="teams">
-            <div id="team1">
-                <div id="team1title">
-                    <div id="team1name-box">
-                        <h1 id="team1name">TEAM 1</h1>
-                        <button id="team1name-edit" onclick="editTeam('team1')">&#9998;</button>
-                    </div>
-                    <div id="team1input-box">
-                        <input type="text" id="team1name-input" placeholder="TEAM 1">
-                        <button id="team1save-btn" onclick="saveTeam(1)">&#9113;</button>
-                    </div>
-                </div>
-                
-                <h1 id="team1score">00</h1>
+    <div id="clock">
+        <h1 id="time">00 : 00</h1>
+        <input class="time-input" id="min-input" type="text" placeholder="00">
+        <input class="time-input" id="sec-input" type="text" placeholder="00">
+        <button id="edit-time" onclick="editTimer()">&#128393</button>
+        <button id="save-time" onclick="saveTimer()">&#x2399</button>
+        <p id="mins-secs">mins secs</p>
+    </div>
 
-                <div id="team1score-adders">
-                    <button onclick="addScore(1, 'team1score')">+1</button>
-                    <button onclick="addScore(2, 'team1score')">+2</button>
-                    <button onclick="addScore(3, 'team1score')">+3</button>
-                </div>
-            </div>
-            
-            <button id="reset-score" onclick="resetScore()">RESET SCORE</button>
+    <div id="clock-btns">
+        <button id="start-btn" onclick="startTimer()">&#x25B6</button>
+        <button id="pause-btn" onclick="pauseTimer()">||</button>
+        <button id="reset-btn" onclick="resetTimer()">&#x27F3</button>
+    </div>
 
-            <div id="team2">
-                <div id="team2title">
-                    <div id="team2name-box">
-                        <h1 id="team2name">TEAM 2</h1>
-                        <button id="team2name-edit" onclick="editTeam('team2')">&#9998;</button>
-                    </div>
-                    <div id="team2input-box">
-                        <input type="text" id="team2name-input" placeholder="TEAM 2">
-                        <button id="team2save-btn" onclick="saveTeam(2)">&#9113;</button>
-                    </div>
-                </div>
-                
-                <h1 id="team2score">00</h1>
+    <div id="background">
+        <div id="team-names">
+            <h1 id="team1-name">TEAM 1</h1>
+            <input class="name-input" id="team1name-input" type="text" placeholder="TEAM 1" data-value="1">
+            <button id="edit-team1" onclick="editTeam(1)">&#128393</button>
+            <button id="save-team1" onclick="saveTeam(1)">&#x2399</button>
 
-                <div id="team2score-adders">
-                    <button onclick="addScore(1, 'team2score')">+1</button>
-                    <button onclick="addScore(2, 'team2score')">+2</button>
-                    <button onclick="addScore(3, 'team2score')">+3</button>
-                </div>
-            </div>
+            <h1 id="team2-name">TEAM 2</h1>
+            <input class="name-input" id="team2name-input" type="text" placeholder="TEAM 2" data-value="2">
+            <button id="edit-team2" onclick="editTeam(2)">&#128393</button>
+            <button id="save-team2" onclick="saveTeam(2)">&#x2399</button>
         </div>
+        <div id="display">
+            <div id="team1-display">
+                <h1 id="team1-score">00</h1>
+            </div>
+            <div id="team2-display">
+                <h1 id="team2-score">00</h1>
+            </div>
+            <div id="score-ctrls">
+                <div id="team1-ctrls">
+                    <button id="team1-1" onclick="addScore(1,1)">+1</button>
+                    <button id="team1-2" onclick="addScore(1,2)">+2</button>
+                    <button id="team1-3" onclick="addScore(1,3)">+3</button>
+                </div>
 
-        <div id="timer">
-            <h1 id="time-display">00:00</h1>
-            <div id="timer-controls">
-                <button id="start-btn">START</button>
-                <button id="pause-btn">PAUSE</button>
-                <button id="reset-btn">RESET</button>
+                <div id="reset-score">
+                    <button id="reset-score-btn" onclick="resetScore()">RESET SCORE</button>
+                </div>
+                
+                <div id="team2-ctrls">
+                    <button id="team2-1" onclick="addScore(2,1)">+1</button>
+                    <button id="team2-2" onclick="addScore(2,2)">+2</button>
+                    <button id="team2-3" onclick="addScore(2,3)">+3</button>
+                </div>
             </div>
         </div>
     </div>
+    
 <script src="script.js"></script>
 </body>
 </html>

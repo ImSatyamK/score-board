@@ -26,159 +26,310 @@
 body{
     margin: 0px;
     padding: 0px;
-    background: rgb(20, 20, 91);
-}
-
-h1,h2, h3, h4, h5, h6{
-    margin: 0;
-    padding: 0;
-}
-
-#container{
+    background: rgb(63, 63, 67);
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-#teams{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: DS_Digital, monospace;
-    color: white;
-}
-
-#team1title, #team2title {
     position: relative;
+}
+
+h1,h2, h3, h4, h5, h6, p{
+    margin: 0;
+    padding: 0;
+}
+
+
+#clock{
+    height: 70px;
+    width: 200px;
+    background: rgb(18, 48, 32);
+    border-radius: 5px;
+    border: 2px solid white;
+    top: 74px;
+    position: absolute;
+    z-index: 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    gap: 10px;
-    margin: 70px;
-}
-
-
-#team1name-box, #team2name-box {
+    align-items: center;
     position: absolute;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 3px solid rgba(165, 88, 210, 0.64);
-    border-radius: 50px;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
 }
 
-#team1name, #team2name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 20px;
-    margin-left: 20px;
-    padding: 0px;
+#time{
+    visibility: visible;
+    font-family: DS_Digital;
+    color: #fff;
+    text-shadow: 0 0 10px;
 }
 
-#team1name-edit, #team2name-edit{
-    padding: 0px;
-    rotate: 90deg;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-#team1input-box, #team2input-box {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 3px solid rgba(165, 88, 210, 0.64);
-    border-radius: 50px;
-    padding: 5px 8px;
-    height: 30px;
-}
-
-#team1name-input, #team2name-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    font-family: DS_Digital, monospace;
-    font-size: 20px;
-    text-align: center;
-    width: 60px;
-}
-
-#team1save-btn, #team2save-btn {
-    padding: 0px;
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 15px;
-    rotate: 0deg;
-    cursor: pointer;
-}
-
-#team1save-btn:hover, #team2save-btn:hover, #team1name-edit:hover, #team2name-edit:hover {
-    color: rgba(165, 88, 210, 1);
-}
-
-
-input::placeholder {
-    color: white;
-    font-family: DS_Digital, monospace;
-    font-size: 20px;
-    padding: 0px;
-}
-
-#team1score, #team2score {
-    height: 100px;
-    width: 200px;
-    background: black;
-    font-size: 100px;
-    margin: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#min-input, #sec-input{
+    position: absolute;
+    background: none;
+    border: 1px solid rgb(0, 247, 255);
     border-radius: 5px;
-    color: red;
-}
-
-#timer{
-    display: none;
-}
-
-#reset-score{
-    width: auto;
-    margin-top: 340px;
-    padding: 5px 10px;
-    font-size: 15px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.64);
-    border-radius: 5px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: DS_Digital, monospace;
-}
-
-button{
-    cursor: pointer;
-    height: 40px;
+    font-family: DS_Digital;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
     width: 40px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.64);
-    border-radius: 5px;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: DS_Digital, monospace;
-    font-size: 20px;
+    visibility: hidden;
 }
 
+#min-input{
+    left: 54px;
+}
+
+#sec-input{
+    left: 109px;
+}
+
+#min-input::placeholder, #sec-input::placeholder{
+    color: #fff;
+}
+
+#edit-time, #save-time{
+    position: absolute;
+    background: none;
+    border: none;
+    left: 150px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#save-time{
+    visibility: hidden;
+    font-size: 15px;
+}
+
+#edit-time:hover, #save-time:hover, #start-btn:hover, #pause-btn:hover, #reset-btn:hover{
+    color: rgb(0, 247, 255);
+    font-size: 16px;
+}
+
+#mins-secs{
+    position: absolute;
+    top: 50px;
+    color: #fff;
+    word-spacing: 20px;
+}
+
+#clock-btns{
+    position: absolute;
+    top: 143px;
+    height: 30px;
+    width: 150px;
+    background:rgb(18, 48, 32);
+    border: 2px solid white;
+    z-index: 2;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#start-btn, #pause-btn, #reset-btn{
+    background: none;
+    border: none;
+    margin: 0px 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#background{
+    position: absolute;
+    height: 500px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(14, 14, 81);
+    border: 5px solid white;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+#team-names{
+    display: flex;
+    color: #fff;
+    font-family: Tourney;
+    font-size: small;
+}
+
+#team1-name{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+#team2-name{
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+
+#display{
+    color: red;
+    text-shadow: 0 0 20px;
+    font-family: DS_Digital;
+    font-size: 40px;
+}
+
+#team1-display, #team2-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 150px;
+    background: black;
+    border-radius: 5px;
+}
+
+#team1-display{
+    position: absolute;
+    top: 250px;
+    left: 70px;
+}
+#team2-display{
+    position: absolute;
+    top: 250px;
+    right: 65px;
+}
+
+#team1-1{
+    position: absolute;
+    top: 370px;
+    left: 80px;
+}
+#team1-2{
+    position: absolute;
+    top: 370px;
+    left: 130px;
+}
+#team1-3{
+    position: absolute;
+    top: 370px;
+    left: 180px;
+}
+
+#reset-score-btn{
+    position: absolute;
+    top: 370px;
+    left: 295px;
+}
+
+
+#team2-1{
+    position: absolute;
+    top: 370px;
+    right: 175px;
+}
+
+#team2-2{
+    position: absolute;
+    top: 370px;
+    right: 125px;
+}
+
+#team2-3{
+    position: absolute;
+    top: 370px;
+    right: 75px;
+}
+
+
+#score-ctrls button{
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: DS_Digital;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#score-ctrls button:hover{
+    color: rgb(0, 247, 255);
+    border: 1px solid rgb(0, 247, 255);
+    font-size: 16px;
+}
+
+#edit-team1, #save-team1{
+    position: absolute;
+    top: 203px;
+    left: 200px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#edit-team2, #save-team2{
+    position: absolute;
+    top: 203px;
+    right: 60px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#save-team1, #save-team2{
+    visibility: hidden;
+}
+
+#edit-team1:hover, #save-team1:hover, #edit-team2:hover, #save-team2:hover{
+    color: rgb(0, 247, 255);
+    font-size: 13px;
+}
+
+#team1name-input{
+    visibility: hidden;
+    position: absolute;
+    height: 30px;
+    width: 95px;
+    top: 197px;
+    left: 97px;
+    background: none;
+    border: 1px solid rgb(0, 247, 255);
+    border-radius: 5px;
+    font-family: Tourney;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+#team1name-input::placeholder{
+    color: #fff;
+    font-size: x-large;
+    font-weight: 700;
+    font-size: 27px;
+}
+
+#team2name-input{
+    visibility: hidden;
+    position: absolute;
+    height: 30px;
+    width: 95px;
+    top: 197px;
+    right: 97px;
+    background: none;
+    border: 1px solid rgb(0, 247, 255);
+    border-radius: 5px;
+    font-family: Tourney;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+#team2name-input::placeholder{
+    color: #fff;
+    font-size: x-large;
+    font-weight: 700;
+    font-size: 27px;
+}

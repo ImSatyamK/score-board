@@ -1,50 +1,171 @@
+let miliseconds = 0;
+let mins = 0;
+let secs = 0;
+let timer = '00 : 00';
+let isTimerRunning = false;
+let setTimer;
 let t1score = 0;
 let t2score = 0;
 
-const team1scoreEl = document.getElementById('team1score')
-const team2scoreEl = document.getElementById('team2score')
+function editTimer(){
+    document.getElementById('edit-time').style.visibility = 'hidden';
+    document.getElementById('save-time').style.visibility = 'visible';
 
-const team1nameBoxEl = document.getElementById('team1name-box')
-const team2nameBoxEl = document.getElementById('team2name-box')
+    document.getElementById('time').style.visibility = 'hidden';
+    document.getElementById('min-input').style.visibility = 'visible';
+    document.getElementById('sec-input').style.visibility = 'visible';
 
-const team1inputBoxEl = document.getElementById('team1input-box')
-const team2inputBoxEl = document.getElementById('team2input-box')
+     if (isTimerRunning || miliseconds > 0) {
+        document.getElementById('min-input').value = mins;
+        document.getElementById('sec-input').value = secs;
+    }
+    else {
+        document.getElementById('min-input').value = '';
+        document.getElementById('sec-input').value = '';
+    }
 
-function addScore(score, team){
-    if (team === 'team1score'){
-        t1score += score;
-        team1scoreEl.textContent = t1score;
+    pauseTimer()
+}
+
+function saveTimer(){
+    mins = parseInt(document.getElementById('min-input').value) || 0;
+    secs = parseInt(document.getElementById('sec-input').value) || 0;
+
+    if (mins > 59) mins = 59;
+
+    if (secs > 59) secs = 59;
+
+    miliseconds = (mins*60*1000) + (secs*1000)
+
+    timer = String(mins).padStart(2,'0') + ' : ' + String(secs).padStart(2,'0')
+
+    console.log(miliseconds)
+
+    document.getElementById('edit-time').style.visibility = 'visible';
+    document.getElementById('save-time').style.visibility = 'hidden';
+
+    document.getElementById('time').style.visibility = 'visible';
+    document.getElementById('time').textContent = timer;
+
+    document.getElementById('min-input').style.visibility = 'hidden';
+    document.getElementById('sec-input').style.visibility = 'hidden';
+}
+
+function startTimer(){
+    if (!isTimerRunning){
+        setTimer = setInterval(updateTime, 1000);
+        isTimerRunning = true;
+    }
+}
+
+function updateTime(){
+    if (miliseconds <= 0) {
+        clearInterval(setTimer);
+        isTimerRunning = false;
+        document.getElementById('time').textContent = '00 : 00';
         return;
     }
-    t2score += score;
-    team2scoreEl.textContent = t2score;
+
+    miliseconds -= 1000
+    mins = Math.floor(miliseconds / (1000*60))
+    secs = Math.floor((miliseconds % (1000*60))/1000)
+
+    timer = String(mins).padStart(2,'0') + ' : ' + String(secs).padStart(2,'0')
+    document.getElementById('time').textContent = timer;
+    return;
+}
+
+function pauseTimer() {
+    clearInterval(setTimer)
+    isTimerRunning = false;
+    if (miliseconds > 0) {
+        document.getElementById('min-input').value = mins;
+        document.getElementById('sec-input').value = secs;
+    }
+    else {
+        document.getElementById('min-input').value = '';
+        document.getElementById('sec-input').value = '';
+    }
+}
+
+function resetTimer(){
+    miliseconds = 0;
+    mins = 0;
+    secs = 0;
+    timer = '00 : 00'
+    isTimerRunning = false;
+
+    document.getElementById('time').textContent = '00 : 00';
+
+    const minInput = document.getElementById('min-input');
+    const secInput = document.getElementById('sec-input');
+
+    minInput.value = '';
+    secInput.value = '';
+
+
+    minInput.placeholder = '00';
+    secInput.placeholder = '00';
+
+}
+
+document.querySelectorAll('.time-input').forEach(input => {
+    input.addEventListener('input', () => {
+        const cursorPos = input.selectionStart;
+        input.value = input.value.replace(/[^0-9]/g, '').slice(0, 2);
+        input.setSelectionRange(cursorPos, cursorPos);
+    });
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") saveTimer();
+    });
+});
+
+
+function editTeam(teamNo){
+    document.getElementById(`edit-team${teamNo}`).style.visibility = 'hidden';
+    document.getElementById(`save-team${teamNo}`).style.visibility = 'visible';
+
+    document.getElementById(`team${teamNo}-name`).style.visibility = 'hidden'
+    document.getElementById(`team${teamNo}name-input`).style.visibility = 'visible'
+}
+
+function saveTeam(teamNo){
+    let teamName = document.getElementById(`team${teamNo}name-input`).value || `TEAM ${teamNo}`
+
+    document.getElementById(`edit-team${teamNo}`).style.visibility = 'visible';
+    document.getElementById(`save-team${teamNo}`).style.visibility = 'hidden';
+
+    document.getElementById(`team${teamNo}-name`).textContent = teamName
+    document.getElementById(`team${teamNo}-name`).style.visibility = 'visible'
+
+    document.getElementById(`team${teamNo}name-input`).style.visibility = 'hidden'
+}
+
+document.querySelectorAll('.name-input').forEach(input =>{
+    input.addEventListener('keydown', (event) =>{
+        const value = parseInt(event.target.dataset.value);
+        if (event.key === "Enter") saveTeam(value)
+    })
+})
+
+function addScore(teamNo, point){
+    if (teamNo === 1){
+        t1score += point;
+        document.getElementById('team1-score').textContent = String(t1score).padStart(2, '0');
+        return;
+    }
+    else{
+        t2score += point;
+        document.getElementById('team2-score').textContent = String(t2score).padStart(2, '0');
+        return;
+    }
 }
 
 function resetScore(){
     t1score = 0;
     t2score = 0;
-    team1scoreEl.textContent = t1score;
-    team2scoreEl.textContent = t2score;
-}
-
-function editTeam(team){
-    if (team === 'team1'){
-        team1nameBoxEl.style.display = 'none';
-        team1inputBoxEl.style.display = 'flex';
-        return;
-    }
-    team2nameBoxEl.style.display = 'none';
-    team2inputBoxEl.style.display = 'flex';
-}
-
-function saveTeam(teamNumber) {
-    let tName = document.getElementById(`team${teamNumber}name-input`).value;
-    document.getElementById(`team${teamNumber}name`).textContent = tName || `TEAM ${teamNumber}`;
-    if (teamNumber === 1){
-        team1nameBoxEl.style.display = 'flex';
-        team1inputBoxEl.style.display = 'none';
-        return;
-    }
-    team2nameBoxEl.style.display = 'flex';
-    team2inputBoxEl.style.display = 'none';
+    document.getElementById('team1-score').textContent = '00';
+    document.getElementById('team2-score').textContent = '00';
+    return;
 }
