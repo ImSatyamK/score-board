@@ -112,7 +112,9 @@ h1,h2, h3, h4, h5, h6, p{
     position: absolute;
     top: 50px;
     color: #fff;
-    word-spacing: 20px;
+    word-spacing: 30px;
+    font-family: DS_Digital;
+    font-size: 12px;
 }
 
 #clock-btns{
